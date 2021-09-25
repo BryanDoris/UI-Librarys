@@ -1,70 +1,390 @@
-local module = {}
+local Library = {}
 
-local function GetEachChildrenSize(guiobj, Type)
-	local size = 0
-	local childs = guiobj:GetChildren()
-	for i = 1, #childs do
-		size += childs[i].Size.X[Type]
+function Library:CreateWindow(Gametitle)
+	local BlueWindow = Instance.new("ScreenGui")
+	local Dragger = Instance.new("Frame")
+	local TabOutLine = Instance.new("ImageLabel")
+	local Window = Instance.new("Frame")
+	local WindowUIGridLayout = Instance.new("UIGridLayout")
+	local LeftWindow = Instance.new("Frame")
+	local Logo = Instance.new("ImageLabel")
+	local BlueHubLogoTXT = Instance.new("TextLabel")
+	local GAMETITLETXT = Instance.new("TextLabel")
+	local LineDesign = Instance.new("ImageLabel")
+	local TabWindow = Instance.new("Frame")
+	local UIGridLayout = Instance.new("UIGridLayout")
+	local OutlineGrowTop = Instance.new("ImageLabel")
+	local OutlineGrowBottom = Instance.new("ImageLabel")
+	local OutlineGrowLeft = Instance.new("ImageLabel")
+	local OutlineGrowRight = Instance.new("ImageLabel")
+
+	--Properties:
+
+	BlueWindow.Name = "BlueWindow"
+	BlueWindow.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	BlueWindow.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	Dragger.Name = "Dragger"
+	Dragger.Parent = BlueWindow
+	Dragger.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Dragger.BorderSizePixel = 0
+	Dragger.Position = UDim2.new(0.247999996, 0, 0.100000001, 0)
+	Dragger.Size = UDim2.new(0, 800, 0, 15)
+
+	TabOutLine.Name = "TabOutLine"
+	TabOutLine.Parent = Dragger
+	TabOutLine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabOutLine.BackgroundTransparency = 1.000
+	TabOutLine.BorderSizePixel = 0
+	TabOutLine.Position = UDim2.new(0.1875, 0, 0, 0)
+	TabOutLine.Size = UDim2.new(0, 3, 0, 550)
+	TabOutLine.Image = "rbxassetid://7549716848"
+
+	Window.Name = "Window"
+	Window.Parent = Dragger
+	Window.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Window.BorderSizePixel = 0
+	Window.Position = UDim2.new(0.191249996, 0, 0, 0)
+	Window.Size = UDim2.new(0, 647, 0, 550)
+	
+	WindowUIGridLayout.Name = "WindowUIGridLayout"
+	WindowUIGridLayout.Parent = Window
+	WindowUIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	WindowUIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	WindowUIGridLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+	WindowUIGridLayout.CellSize = UDim2.new(0, 300, 0, 530)
+
+	LeftWindow.Name = "LeftWindow"
+	LeftWindow.Parent = Dragger
+	LeftWindow.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	LeftWindow.BorderSizePixel = 0
+	LeftWindow.Size = UDim2.new(0, 150, 0, 550)
+
+	Logo.Name = "Logo"
+	Logo.Parent = LeftWindow
+	Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Logo.BackgroundTransparency = 1.000
+	Logo.BorderSizePixel = 0
+	Logo.Position = UDim2.new(0.100000001, 0, 0.0272727273, 0)
+	Logo.Size = UDim2.new(0, 30, 0, 30)
+	Logo.Image = "rbxassetid://7549856132"
+
+	BlueHubLogoTXT.Name = "BlueHubLogoTXT"
+	BlueHubLogoTXT.Parent = Logo
+	BlueHubLogoTXT.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BlueHubLogoTXT.BackgroundTransparency = 1.000
+	BlueHubLogoTXT.BorderSizePixel = 0
+	BlueHubLogoTXT.Position = UDim2.new(1.33333337, 0, 0.166666672, 0)
+	BlueHubLogoTXT.Size = UDim2.new(0, 90, 0, 25)
+	BlueHubLogoTXT.Font = Enum.Font.ArialBold
+	BlueHubLogoTXT.Text = "Blue's Hub"
+	BlueHubLogoTXT.TextColor3 = Color3.fromRGB(230, 230, 230)
+	BlueHubLogoTXT.TextSize = 14.000
+	BlueHubLogoTXT.TextStrokeColor3 = Color3.fromRGB(51, 97, 242)
+	BlueHubLogoTXT.TextXAlignment = Enum.TextXAlignment.Left
+
+	GAMETITLETXT.Name = "GAMETITLETXT"
+	GAMETITLETXT.Parent = Logo
+	GAMETITLETXT.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	GAMETITLETXT.BackgroundTransparency = 1.000
+	GAMETITLETXT.BorderSizePixel = 0
+	GAMETITLETXT.Position = UDim2.new(-0.333333343, 0, 1.26666665, 0)
+	GAMETITLETXT.Size = UDim2.new(0, 140, 0, 20)
+	GAMETITLETXT.Font = Enum.Font.ArialBold
+	GAMETITLETXT.Text = Gametitle
+	GAMETITLETXT.TextColor3 = Color3.fromRGB(230, 230, 230)
+	GAMETITLETXT.TextSize = 14.000
+
+	LineDesign.Name = "LineDesign"
+	LineDesign.Parent = Logo
+	LineDesign.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	LineDesign.BackgroundTransparency = 1.000
+	LineDesign.Position = UDim2.new(-0.5, 0, 2.16666675, 0)
+	LineDesign.Size = UDim2.new(0, 150, 0, 3)
+	LineDesign.Image = "rbxassetid://7549716848"
+
+	TabWindow.Name = "TabWindow"
+	TabWindow.Parent = LeftWindow
+	TabWindow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TabWindow.BackgroundTransparency = 1.000
+	TabWindow.BorderSizePixel = 0
+	TabWindow.Position = UDim2.new(0.0333333351, 0, 0.150909096, 0)
+	TabWindow.Size = UDim2.new(0, 140, 0, 467)
+
+	UIGridLayout.Parent = TabWindow
+	UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIGridLayout.CellSize = UDim2.new(0, 140, 0, 30)
+
+	OutlineGrowTop.Name = "OutlineGrowTop"
+	OutlineGrowTop.Parent = Dragger
+	OutlineGrowTop.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	OutlineGrowTop.BackgroundTransparency = 1.000
+	OutlineGrowTop.BorderSizePixel = 0
+	OutlineGrowTop.Position = UDim2.new(0, 0, -0.200000033, 0)
+	OutlineGrowTop.Size = UDim2.new(0, 800, 0, 3)
+	OutlineGrowTop.Image = "rbxassetid://7549716848"
+	OutlineGrowTop.ImageTransparency = 0.800
+
+	OutlineGrowBottom.Name = "OutlineGrowBottom"
+	OutlineGrowBottom.Parent = Dragger
+	OutlineGrowBottom.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	OutlineGrowBottom.BackgroundTransparency = 1.000
+	OutlineGrowBottom.BorderSizePixel = 0
+	OutlineGrowBottom.Position = UDim2.new(0, 0, 36.6666679, 0)
+	OutlineGrowBottom.Size = UDim2.new(0, 800, 0, 3)
+	OutlineGrowBottom.Image = "rbxassetid://7549716848"
+	OutlineGrowBottom.ImageTransparency = 0.800
+
+	OutlineGrowLeft.Name = "OutlineGrowLeft"
+	OutlineGrowLeft.Parent = Dragger
+	OutlineGrowLeft.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	OutlineGrowLeft.BackgroundTransparency = 1.000
+	OutlineGrowLeft.BorderSizePixel = 0
+	OutlineGrowLeft.Position = UDim2.new(-0.00374999992, 0, -0.200000003, 0)
+	OutlineGrowLeft.Size = UDim2.new(0, 3, 0, 556)
+	OutlineGrowLeft.Image = "rbxassetid://7549716848"
+	OutlineGrowLeft.ImageTransparency = 0.800
+
+	OutlineGrowRight.Name = "OutlineGrowRight"
+	OutlineGrowRight.Parent = Dragger
+	OutlineGrowRight.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	OutlineGrowRight.BackgroundTransparency = 1.000
+	OutlineGrowRight.BorderSizePixel = 0
+	OutlineGrowRight.Position = UDim2.new(0.998750031, 0, -0.200000003, 0)
+	OutlineGrowRight.Size = UDim2.new(0, 3, 0, 556)
+	OutlineGrowRight.Image = "rbxassetid://7549716848"
+	OutlineGrowRight.ImageTransparency = 0.800
+
+	-- Scripts:
+
+	local function RPHX_fake_script() -- Dragger.DraggingScript 
+		local script = Instance.new('LocalScript', Dragger)
+
+		local UserInputService = game:GetService("UserInputService")
+
+		local gui = script.Parent
+
+		local dragging
+		local dragInput
+		local dragStart
+		local startPos
+
+		local function update(input)
+			local delta = input.Position - dragStart
+			gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		end
+
+		gui.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = true
+				dragStart = input.Position
+				startPos = gui.Position
+
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+					end
+				end)
+			end
+		end)
+
+		gui.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+
+		UserInputService.InputChanged:Connect(function(input)
+			if input == dragInput and dragging then
+				update(input)
+			end
+		end)
 	end
-	return size
+	coroutine.wrap(RPHX_fake_script)()
+	local function BFDW_fake_script() -- BlueHubLogoTXT.RainbowBlueHubTXT 
+		local script = Instance.new('LocalScript', BlueHubLogoTXT)
+
+		--Scripted by brad5203(2017)
+		--Local Variables
+		local hue = 0;
+		local SAT = 1;
+		local LUM = 1; 
+		local SPEED = 1;
+		--Rainbow Function
+		function hsvToRgb(h, s, v)
+			local r, g, b
+			local i = math.floor(h * 6);
+			local f = h * 6 - i;
+			local p = v * (1 - s);
+			local q = v * (1 - f * s);
+			local t = v * (1 - (1 - f) * s);
+			i = i % 6
+			if i == 0 then r, g, b = v, t, p
+			elseif i==1 then r, g, b=q, v, p
+			elseif i==2 then r, g, b=p, v, t
+			elseif i==3 then r, g, b=p, q, v
+			elseif i==4 then r, g, b=t, p, v
+			elseif i==5 then r, g, b=v, p, q
+			end 
+			return r, g, b
+		end
+		--Rainbow Loop 
+		while (true) do
+			color = hsvToRgb(hue/360, SAT, LUM);
+			hue = (hue+SPEED)%360;
+			wait()
+			script.Parent.TextColor3 = Color3.fromHSV(hue/360, SAT, LUM)
+		end
+	end
+	coroutine.wrap(BFDW_fake_script)()
+	local function BAUH_fake_script() -- BlueWindow.leftAltToToggleUI 
+		local script = Instance.new('LocalScript', BlueWindow)
+
+		-- We must get the UserInputService before we can use it
+		local UserInputService = game:GetService("UserInputService")
+
+		-- A sample function providing one usage of InputBegan
+		local function onInputBegan(input, gameProcessed)
+			if input.UserInputType == Enum.UserInputType.Keyboard then
+				if input.KeyCode == Enum.KeyCode.LeftAlt then
+					if script.Parent.Enabled == true then
+						script.Parent.Enabled = false
+					elseif script.Parent.Enabled == false then
+						script.Parent.Enabled = true
+					end
+				end
+			end
+		end
+
+		UserInputService.InputBegan:Connect(onInputBegan)
+	end
+	coroutine.wrap(BAUH_fake_script)()
+	
+	local Window = {}
+	function Window:CreateTab(tabname)
+		local TabButton = Instance.new("TextButton")
+		local SelectedImageTab = Instance.new("ImageLabel")
+		local ContainerFor = Instance.new("Folder")
+
+		ContainerFor.Name = tabname
+		ContainerFor.Parent = Window
+
+		TabButton.Name = tabname
+		TabButton.Parent = TabWindow
+		TabButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TabButton.BackgroundTransparency = 1.000
+		TabButton.BorderSizePixel = 0
+		TabButton.Size = UDim2.new(0, 200, 0, 50)
+		TabButton.Font = Enum.Font.GothamSemibold
+		TabButton.Text = tabname
+		TabButton.TextColor3 = Color3.fromRGB(230, 230, 230)
+		TabButton.TextSize = 14.000
+		TabButton.MouseButton1Click:Connect(function()
+			for i, v in pairs(ContainerFor:GetChildren()) do
+				if v:IsA("Frame") then
+					v.Visible = true
+				end
+			end
+		end)
+
+		SelectedImageTab.Name = "SelectedImageTab"
+		SelectedImageTab.Parent = TabButton
+		SelectedImageTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		SelectedImageTab.BackgroundTransparency = 1.000
+		SelectedImageTab.BorderSizePixel = 0
+		SelectedImageTab.Position = UDim2.new(0.142857149, 0, 0.933333337, 0)
+		SelectedImageTab.Size = UDim2.new(0, 100, 0, 2)
+		SelectedImageTab.Image = "rbxassetid://7549716848"
+		SelectedImageTab.ImageTransparency = 1.000
+
+		-- Scripts:
+
+		local function TIJRA_fake_script() -- TabButton.TabButtonScript 
+			local script = Instance.new('LocalScript', TabButton)
+
+			script.Parent.MouseButton1Click:Connect(function()
+				for i, Image in pairs(script.Parent.Parent:GetDescendants()) do
+					if Image:IsA("ImageLabel") then
+						Image.ImageTransparency = 1
+					end
+				end
+				script.Parent.SelectedImageTab.ImageTransparency = 0
+				for i, contain in pairs(script.Parent.Parent.Parent.Parent.Window:GetChildren()) do
+					if contain:IsA("Folder") then
+						for _, Vis in pairs(contain:GetChildren()) do
+							if Vis:IsA("Frame") then
+								Vis.Visible = false
+							end
+						end
+					end
+				end
+			end)
+		end
+		coroutine.wrap(TIJRA_fake_script)()
+		
+		local Tab = {}
+		
+		function Tab:CreateSection()
+			local Container = Instance.new("Frame")
+			local ContainerUIGridLayout = Instance.new("UIGridLayout")
+			
+			Container.Name = "Container"
+			Container.Parent = ContainerFor
+			Container.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			Container.BorderSizePixel = 0
+			Container.Position = UDim2.new(0.01236476, 0, 0.0181818176, 0)
+			Container.Size = UDim2.new(0, 300, 0, 530)
+
+			ContainerUIGridLayout.Name = "ContainerUIGridLayout"
+			ContainerUIGridLayout.Parent = Container
+			ContainerUIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+			ContainerUIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+			ContainerUIGridLayout.CellSize = UDim2.new(0, 280, 0, 20)
+			
+			local Section = {}
+			function Section:CreateButton(buttonname)
+
+				local ButtonFrame = Instance.new("Frame")
+				local Button = Instance.new("TextButton")
+				local ButtonUICorner = Instance.new("UICorner")
+
+				ButtonFrame.Name = "ButtonFrame"
+				ButtonFrame.Parent = Container
+				ButtonFrame.BackgroundColor3 = Color3.fromRGB(43, 90, 177)
+				ButtonFrame.Size = UDim2.new(0, 100, 0, 100)
+
+				Button.Name = "Button"
+				Button.Parent = ButtonFrame
+				Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Button.BackgroundTransparency = 1.000
+				Button.BorderSizePixel = 0
+				Button.Size = UDim2.new(0, 280, 0, 20)
+				Button.Font = Enum.Font.GothamSemibold
+				Button.Text = buttonname
+				Button.TextColor3 = Color3.fromRGB(230, 230, 230)
+				Button.TextSize = 14.000
+
+				ButtonUICorner.CornerRadius = UDim.new(0, 4)
+				ButtonUICorner.Name = "ButtonUICorner"
+				ButtonUICorner.Parent = ButtonFrame
+
+				-- Scripts:
+
+				local function ILKEOI_fake_script() -- Button.ButtonScript 
+					local script = Instance.new('LocalScript', Button)
+
+					script.Parent.MouseButton1Click:Connect(function()
+						script.Parent:TweenPosition(UDim2.new(0, 0,0, 0),"InOut","Quad",0.2,true)
+					end)
+				end
+				coroutine.wrap(ILKEOI_fake_script)()
+
+			end
+			return Section
+		end
+		return Tab
+	end
+	return Window
 end
 
-local tweenService = game:GetService("TweenService")
-
-function module:TransitionIn(text: string, fontMap: FontMap, tweenTime: number, parent: Instance)
-	local frame = Instance.new("Frame")
-	frame.Name = "Transition"
-	frame.BackgroundTransparency = 1
-	frame.AnchorPoint = Vector2.new(0.5, 0.5)
-	frame.Parent = parent
-
-	for i = 1, #text do
-		local char = fontMap[text:sub(i,i)]:Clone()
-		char.Position = UDim2.new(0,GetEachChildrenSize(frame, "Offset"),0,0)
-		char.TextTransparency = 1
-		char.Visible = true
-		char.Parent = frame
-	end
-
-	frame.Size = UDim2.new(0,GetEachChildrenSize(frame, "Offset"),0,frame:GetChildren()[1].Size.Y.Offset)
-	frame.Position = UDim2.new(0.5,0,0.5,0)
-	frame.ClipsDescendants = true
-
-	for i = #text, 1, -1 do
-		wait((tweenTime or 1) / 50)
-		local char = frame:GetChildren()[i]
-		tweenService:Create(char, TweenInfo.new(tweenTime), {TextTransparency = 0}):Play()
-	end
-
-	return frame
-end
-
-function module:TransitionOut(text: string, fontMap: FontMap, tweenTime: number, parent: Instance)
-	local frame = Instance.new("Frame")
-	frame.Name = "Transition"
-	frame.BackgroundTransparency = 1
-	frame.AnchorPoint = Vector2.new(0.5, 0.5)
-	frame.Parent = parent
-
-	for i = 1, #text do
-		local char = fontMap[text:sub(i,i)]:Clone()
-		char.Position = UDim2.new(0,GetEachChildrenSize(frame, "Offset"),0,0)
-		char.TextTransparency = 0
-		char.Visible = true
-		char.Parent = frame
-	end
-
-	frame.Size = UDim2.new(0,GetEachChildrenSize(frame, "Offset"),0,frame:GetChildren()[1].Size.Y.Offset)
-	frame.Position = UDim2.new(0.5,0,0.5,0)
-	frame.ClipsDescendants = true
-
-	for i = #text, 1, -1 do
-		wait((tweenTime or 1) / 50)
-		local char = frame:GetChildren()[i]
-		tweenService:Create(char, TweenInfo.new(tweenTime), {TextTransparency = 1}):Play()
-	end
-
-	return frame
-end
-
-return module
+return Library
